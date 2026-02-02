@@ -102,7 +102,7 @@ const CombinedSection = () => {
         {/* Section Heading */}
         <section id='form'>
           <motion.h2 
-            className="text-2xl max-[470px]:text-[22px] sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-gray-900 relative"
+            className="text-2xl max-[470px]:text-[22px] sm:text-3xl md:text-4xl lg:text-4xl font-bold text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-gray-900 relative"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -122,8 +122,8 @@ const CombinedSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 max-[420px]:gap-5 gap-10 items-start">
           {/* Form Column */}
           <motion.div 
-            className="p-8 rounded-lg shadow-md"
-            style={{ backgroundColor: '#101828' }}
+            className="p-8 rounded-lg shadow-md bg-gradient-to-r from-gray-50 to-gray-100"
+            // style={{ backgroundColor: '#101828' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -131,7 +131,7 @@ const CombinedSection = () => {
           >
             <form onSubmit={handleSubmit}>
               <div className="mb-6">
-                <label htmlFor="name" className="block text-gray-200 mb-2">
+                <label htmlFor="name" className="block text-black mb-2">
                   Name <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -140,7 +140,7 @@ const CombinedSection = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 bg-gray-800 text-white placeholder-gray-400"
+                  className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600  text-white placeholder-gray-400"
                   placeholder="Enter your full name"
                   required
                   disabled={isSubmitting}
@@ -148,7 +148,7 @@ const CombinedSection = () => {
               </div>
               
               <div className="mb-6">
-                <label htmlFor="email" className="block text-gray-200 mb-2">
+                <label htmlFor="email" className="block text-black mb-2">
                   Email
                 </label>
                 <input
@@ -157,14 +157,14 @@ const CombinedSection = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 bg-gray-800 text-white placeholder-gray-400"
+                  className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 text-white placeholder-gray-400"
                   placeholder="Enter your email"
                   disabled={isSubmitting}
                 />
               </div>
               
               <div className="mb-6">
-                <label htmlFor="phone" className="block text-gray-200 mb-2">
+                <label htmlFor="phone" className="block text-black mb-2">
                   Phone <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -173,7 +173,7 @@ const CombinedSection = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 bg-gray-800 text-white placeholder-gray-400"
+                  className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 text-white placeholder-gray-400"
                   placeholder="Enter your phone number"
                   required
                   disabled={isSubmitting}
@@ -181,7 +181,7 @@ const CombinedSection = () => {
               </div>
               
               <div className="mb-6">
-                <label htmlFor="concern" className="block text-gray-200 mb-2">
+                <label htmlFor="concern" className="block text-black mb-2">
                   Concern <span className="text-red-400">*</span>
                 </label>
                 <select
@@ -189,7 +189,7 @@ const CombinedSection = () => {
                   name="concern"
                   value={formData.concern}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 bg-gray-800 text-white"
+                  className="w-full px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 text-black placeholder-gray-400"
                   required
                   disabled={isSubmitting}
                 >
@@ -320,7 +320,7 @@ const CombinedSection = () => {
                       className={`flex items-center justify-center p-3 rounded-lg ${
                         travelMode === 'driving' 
                           ? 'bg-blue-100 text-blue-600 border border-blue-200' 
-                          : 'bg-gray-50 text-gray-600 border border-gray-200'
+                          : 'bg-gray-50 text-gray-600 border border-black'
                       }`}
                     >
                       <Car className="w-5 h-5 mr-2" />
@@ -331,7 +331,7 @@ const CombinedSection = () => {
                       className={`flex items-center justify-center p-3 rounded-lg ${
                         travelMode === 'walking' 
                           ? 'bg-blue-100 text-blue-600 border border-blue-200' 
-                          : 'bg-gray-50 text-gray-600 border border-gray-200'
+                          : 'bg-gray-50 text-gray-600 border border-black'
                       }`}
                     >
                       <FaWalking className="w-5 h-5 mr-2" />
