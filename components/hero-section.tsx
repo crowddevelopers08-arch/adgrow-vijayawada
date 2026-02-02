@@ -1,131 +1,233 @@
 "use client";
-import { Star } from "lucide-react";
-import React from "react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
 
 const HairClinicHero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Array of images for the carousel
+  const images = [
+    "bannew.jpeg",
+    "/new1.jpg",
+    "hairrrrr.jpg",
+    "new2.webp",
+  ];
+
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
-    <section className="relative bg-white text-black overflow-hidden flex items-center pt-16 md:pt-20 lg:pt-24 xl:pt-28 2xl:pt-32">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-black opacity-5 sm:opacity-10">
-        <div
+    <section className="relative text-black overflow-hidden flex items-center min-h-[80vh]">
+      {/* Background Image with fixed position */}
+      <div className="absolute inset-0 z-0">
+        <div 
           className="absolute inset-0"
           style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)",
-            backgroundSize: "40px 40px",
+            backgroundImage: `url('vijban.jpg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed'
           }}
-        ></div>
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-4 md:py-8 lg:py-10 xl:py-12 mb-3 md:mb-4 lg:mb-5 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-0 sm:gap-0 md:gap-10 lg:gap-12 xl:gap-16 2xl:gap-20">
-          {/* Text Content */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left flex flex-col px-4 sm:px-6 md:px-8 lg:pl-8 xl:pl-12 2xl:pl-16 justify-center">
-            {/* Main Heading - Responsive font sizes */}
-            <h1 className="text-2xl xs:text-2.5xl sm:text-3xl md:text-4xl lg:text-4.5xl xl:text-5xl 2xl:text-6xl font-bold mb-3 sm:mb-4 md:mb-5 lg:mb-6 leading-snug sm:leading-tight md:leading-tight lg:leading-tight">
-              Hair Loss Ends Here -{" "}
-              <span className="text-[#ec2028] block sm:inline">
-                Flat ₹99,999 Unlimited
-              </span>{" "}
-              Follicles with 97% Success Rate
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-base sm:text-lg md:text-xl lg:text-lg xl:text-xl 2xl:text-2xl mb-4 sm:mb-5 md:mb-6 lg:mb-7 text-gray-800 font-medium">
-              Get a personalised consultation, scalp analysis & clear treatment
-              plan.
-            </p>
-            
-            {/* Rating Badge - Responsive layout */}
-            <div className="flex flex-wrap justify-center lg:justify-start items-center gap-2 sm:gap-3 bg-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md mb-5 sm:mb-6 md:mb-7 max-w-full">
-              <div className="flex items-center gap-1">
-                <Star className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" />
-                <span className="font-semibold text-gray-800 text-sm sm:text-base">
-                  4.7/5 Google Rated
-                </span>
-              </div>
-              <span className="text-gray-300 hidden xs:inline">|</span>
-              <span className="text-gray-700 text-sm sm:text-base whitespace-nowrap">
-                Natural Looking Results
-              </span>
-              <span className="text-gray-300 hidden sm:inline">|</span>
-              <span className="text-gray-700 text-sm sm:text-base whitespace-nowrap">
-                FDA Approved
-              </span>
-            </div>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-              <div className="relative group">
-                <a
-                  href="#form"
-                  className="relative flex items-center justify-center bg-transparent border-1 border-[#ec2028] text-black font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-full overflow-hidden transition-all duration-300 ease-out transform group-hover:scale-105 hover:border-black text-sm sm:text-base hover:text-white min-w-[200px] sm:min-w-[240px]"
-                >
-                  <div className="absolute inset-0 bg-[#ec2028] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out"></div>
-                  <div className="relative flex items-center z-10">
-                    <svg
-                      className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                    <span className="whitespace-nowrap">Book Consultation Now</span>
-                  </div>
-
-                  {/* Enhanced Ring Effect */}
-                  <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-red-300/80 group-hover:opacity-100 transition-all duration-500 ease-out opacity-0"></div>
-                </a>
-
-                {/* Enhanced Glow Effect */}
-                <div className="absolute -inset-2 bg-red-500/20 rounded-full blur-md group-hover:opacity-75 transition-all duration-500 ease-out opacity-0 -z-10"></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Image Section */}
-          <div className="w-full lg:w-1/2 flex justify-center mt-6 sm:mt-8 lg:mt-0">
-            <div className="relative">
-              {/* Responsive image container */}
-              <div className="w-88 h-68 max-sm:mb-4 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 2xl:w-[28rem] 2xl:h-[28rem] rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-700 hover:scale-105">
-                <img
-                  src="bannew.jpeg"
-                  alt="Hair treatment at Adgro Hair Clinic"
-                  className="w-full h-full object-cover transition-all duration-500 hover:opacity-100"
-                  loading="lazy"
-                />
-              </div>
-
-              {/* Decorative elements - Responsive positioning */}
-              <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#ec2028] rounded-full mix-blend-screen opacity-30 animate-pulse-slow"></div>
-              <div className="absolute -bottom-1 -left-1 sm:-bottom-2 sm:-left-2 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-gray-400 rounded-full mix-blend-multiply opacity-40 animate-pulse-slow delay-1000"></div>
-
-              {/* Floating elements - Show on medium screens and above */}
-              <div className="absolute -top-1 -right-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-white/10 rounded-full animate-float-slow hidden sm:block"></div>
-              <div className="absolute -bottom-2 -right-3 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 bg-[#ec2028]/30 rounded-full animate-float-slower hidden sm:block"></div>
-              <div className="absolute top-6 -left-2 sm:top-8 sm:-left-3 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 bg-white/20 rounded-full animate-float-slowest hidden sm:block"></div>
-            </div>
-          </div>
+        />
+        
+        {/* Gradient Overlay for better readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent"></div>
+        
+        {/* Dark overlay at edges for contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
+        
+        {/* Subtle pattern overlay */}
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 2px 2px, rgba(0,0,0,0.2) 1px, transparent 0)",
+              backgroundSize: "60px 60px",
+            }}
+          ></div>
         </div>
       </div>
 
-      {/* Wave divider */}
-      <div className="absolute bottom-0 left-0 w-full">
-        <svg
-          viewBox="0 0 1440 120"
-          className="w-full h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 text-gray-900"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="currentColor"
-            d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,74.7C1120,75,1280,53,1360,42.7L1440,32L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
-          ></path>
-        </svg>
+      {/* Content Container */}
+      <div className="container mx-auto px-4 sm:px-6 py-8 md:py-12 lg:py-16 mt-10 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 xl:gap-20">
+          {/* Text Content - Enhanced visibility */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left flex flex-col">
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 md:p-8 lg:p-10 shadow-2xl border border-white/20">
+              <h1 className="text-3xl xs:text-4xl max-[470px]:text-[25px] sm:text-4xl md:text-5xl lg:text-5xl xl:text-4xl font-bold mb-4 md:mb-6 leading-tight text-gray-900">
+                Hair Loss Ends Here -{" "}
+                <span className="text-[#ec2028] bg-gradient-to-r from-[#ec2028] to-[#ff6b6b] bg-clip-text text-transparent">
+                  Flat ₹99,999 Unlimited
+                </span>{" "}
+                Follicles with 97% Success Rate
+              </h1>
+
+              <p className="text-base sm:text-lg md:text-xl lg:text-lg max-[470px]:text-[16px] xl:text-lg mb-6 md:mb-8 text-gray-800 font-medium bg-gradient-to-r from-gray-50 to-white py-3 px-4 rounded-xl shadow-sm border border-gray-100">
+                Get a personalised consultation, scalp analysis & clear treatment plan.
+              </p>
+              
+              {/* Rating Badge */}
+<div className="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-4 bg-gradient-to-r from-white to-gray-50 px-4 sm:px-6 py-3 rounded-full shadow-lg mb-8 backdrop-blur-sm border border-gray-200/50 text-center">
+
+  {/* Rating */}
+  <div className="flex items-center gap-2">
+    <div className="flex items-center">
+      {[...Array(5)].map((_, i) => (
+        <Star
+          key={i}
+          className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400"
+        />
+      ))}
+    </div>
+    <span className="font-bold text-gray-900 text-sm sm:text-base">
+      4.7/5 <span className="font-normal text-gray-600">Google Rated</span>
+    </span>
+  </div>
+
+  {/* Divider – hidden on mobile */}
+  <div className="hidden sm:block h-6 w-px bg-gray-300"></div>
+
+  {/* Feature */}
+  <span className="text-gray-700 font-medium text-sm sm:text-base">
+    Natural Looking Results
+  </span>
+
+  {/* Divider – hidden on mobile */}
+  <div className="hidden sm:block h-6 w-px bg-gray-300"></div>
+
+  {/* Feature */}
+  <span className="text-gray-700 font-medium text-sm sm:text-base">
+    FDA Approved
+  </span>
+</div>
+
+              
+              {/* CTA Button */}
+              <div className="flex justify-center lg:justify-start">
+                <div className="relative group max-w-md">
+                  <a
+                    href="#form"
+                    className="relative flex items-center justify-center bg-gradient-to-r from-[#ec2028] via-[#ff4757] to-[#ec2028] text-white font-bold py-4 px-8 rounded-full overflow-hidden transition-all duration-300 ease-out transform group-hover:scale-105 hover:shadow-2xl hover:shadow-red-300/50 text-lg md:text-xl"
+                  >
+                    {/* Animated background */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#ff4757] via-[#ec2028] to-[#ff4757] bg-[length:200%_100%] animate-gradient-x"></div>
+                    
+                    {/* Shine effect */}
+                    <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg] group-hover:left-[150%] transition-all duration-1000"></div>
+                    
+                    <div className="relative flex items-center z-10">
+                      <svg
+                        className="w-5 h-5 md:w-6 md:h-6 mr-3"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                      <span className="whitespace-nowrap font-semibold">Book Free Consultation Now</span>
+                    </div>
+                  </a>
+
+                  {/* Glow Effect */}
+                  <div className="absolute -inset-3 bg-gradient-to-r from-[#ec2028]/30 to-[#ff6b6b]/30 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500 opacity-70 -z-10"></div>
+                  
+                  {/* Floating ring */}
+                  <div className="absolute -inset-4 rounded-full border-4 border-[#ec2028]/20 group-hover:border-[#ec2028]/30 transition-all duration-1000 animate-pulse-slow -z-20"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Image Carousel Section */}
+          <div className="w-full lg:w-1/2 flex justify-center px-4">
+            <div className="relative w-full max-w-lg">
+              {/* Main Image Card with 3D effect */}
+              <div className="relative rounded-3xl overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transform transition-all duration-700 group hover:shadow-[0_35px_60px_-15px_rgba(236,32,40,0.3)]">
+                <div className="aspect-[3/3] w-full">
+                  <img
+                    src={images[currentImageIndex]}
+                    alt="Hair treatment at Adgro Hair Clinic"
+                    className="w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-110"
+                  />
+                  
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                </div>
+                
+                {/* Image counter */}
+                <div className="absolute top-6 right-6 bg-black/80 text-white px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-white/20">
+                  <span className="text-[#ec2028] font-bold">{currentImageIndex + 1}</span> / {images.length}
+                </div>
+              </div>
+
+              {/* Navigation Buttons */}
+              <button
+                onClick={prevImage}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hover:bg-white hover:scale-110 hover:shadow-3xl transition-all duration-300 z-20 border border-gray-200"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-7 h-7 text-gray-800" />
+              </button>
+              
+              <button
+                onClick={nextImage}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hover:bg-white hover:scale-110 hover:shadow-3xl transition-all duration-300 z-20 border border-gray-200"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-7 h-7 text-gray-800" />
+              </button>
+
+              {/* Image Indicators/Dots */}
+              <div className="flex justify-center mt-8 space-x-3">
+                {images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`transition-all duration-300 ${
+                      index === currentImageIndex 
+                        ? 'bg-gradient-to-r from-[#ec2028] to-[#ff6b6b] w-10 h-2 rounded-full shadow-lg' 
+                        : 'bg-gray-300 hover:bg-gray-400 w-2 h-2 rounded-full hover:scale-125'
+                    }`}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Floating decorative elements */}
+              <div className="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-br from-[#ec2028]/20 to-transparent rounded-full mix-blend-multiply animate-pulse-slow z-0 blur-sm"></div>
+              <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-tr from-gray-400/20 to-transparent rounded-full mix-blend-multiply animate-pulse-slow delay-1000 z-0 blur-sm"></div>
+              
+              <div className="absolute top-10 -right-10 w-10 h-10 bg-white/20 rounded-full animate-float-slow hidden lg:block backdrop-blur-sm"></div>
+              <div className="absolute bottom-10 -left-10 w-8 h-8 bg-[#ec2028]/20 rounded-full animate-float-slower hidden lg:block backdrop-blur-sm"></div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Custom animations */}
@@ -148,41 +250,48 @@ const HairClinicHero = () => {
         @keyframes float {
           0%,
           100% {
-            transform: translateY(0px);
+            transform: translateY(0px) rotate(0deg);
           }
-          50% {
-            transform: translateY(-6px);
+          33% {
+            transform: translateY(-10px) rotate(5deg);
+          }
+          66% {
+            transform: translateY(5px) rotate(-5deg);
           }
         }
         .animate-float-slow {
-          animation: float 6s ease-in-out infinite;
-        }
-        .animate-float-slower {
           animation: float 8s ease-in-out infinite;
         }
-        .animate-float-slowest {
-          animation: float 10s ease-in-out infinite;
+        .animate-float-slower {
+          animation: float 12s ease-in-out infinite;
         }
         
-        /* Custom text size for extra small screens */
-        @media (max-width: 360px) {
-          .text-2\.5xl {
-            font-size: 1.5rem;
-            line-height: 2rem;
+        @keyframes gradient-x {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
           }
         }
-        
-        @media (min-width: 640px) {
-          .text-4\.5xl {
-            font-size: 2.5rem;
-            line-height: 2.75rem;
-          }
+        .animate-gradient-x {
+          animation: gradient-x 3s ease infinite;
+          background-size: 200% 200%;
         }
         
-        @media (min-width: 768px) {
-          .text-4\.5xl {
-            font-size: 2.75rem;
-            line-height: 3rem;
+        /* Smooth image transition */
+        img {
+          animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0.7;
+            transform: scale(1.05);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
           }
         }
       `}</style>
@@ -190,4 +299,4 @@ const HairClinicHero = () => {
   );
 };
 
-export default HairClinicHero;
+export default HairClinicHero; 
