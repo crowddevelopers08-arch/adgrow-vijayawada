@@ -1,170 +1,189 @@
-"use client";
-import { motion } from 'framer-motion';
-import React, { useEffect, useRef, useState } from 'react';
+// "use client";
+// import { motion } from 'framer-motion';
+// import React, { useEffect, useRef, useState } from 'react';
 
-const ProcessTimeline = () => {
-  const [inView, setInView] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+// const ProcessTimeline = () => {
+//   const [inView, setInView] = useState(false);
+//   const sectionRef = useRef<HTMLDivElement>(null);
   
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
+//   useEffect(() => {
+//     const observer = new IntersectionObserver(
+//       ([entry]) => {
+//         if (entry.isIntersecting) {
+//           setInView(true);
+//         }
+//       },
+//       { threshold: 0.3 }
+//     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+//     if (sectionRef.current) {
+//       observer.observe(sectionRef.current);
+//     }
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+//     return () => {
+//       if (sectionRef.current) {
+//         observer.unobserve(sectionRef.current);
+//       }
+//     };
+//   }, []);
 
-  return (
-     <>
-     <style jsx global>{`
-      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-      `}</style>
-    <div className="py-6 md:py-8 px-4 bg-[#e2e2e2]" ref={sectionRef} style={{fontFamily: "'Outfit', sans-serif"}}>
-      <div className="max-w-6xl mx-auto">
-         <motion.h2 
-          className="text-2xl sm:text-3xl max-[470px]:text-[22px] md:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 text-gray-900 relative"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ 
-            duration: 0.8,
-            type: "spring",
-            stiffness: 80,
-            damping: 15
-          }}
-        >
-          <span className="relative inline-block">
-            How Your Journey Works
-        
-          </span>
-        </motion.h2>
-        
-        {/* Desktop Timeline (horizontal) */}
-        <div className="hidden md:block relative">
-          {/* Main connecting line with animated progress */}
-          <div className="absolute left-16 right-16 top-12 h-1 bg-gray-300 z-0">
-            <div 
-              className="h-full bg-[#ea2629] transition-all duration-1000 ease-out"
-              style={{ width: inView ? '100%' : '0%' }}
-            ></div>
-          </div>
+//   return (
+//     <>
+//       <style jsx global>{`
+//         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+//       `}</style>
+      
+//       <div className="py-6 md:py-8 px-4 bg-[#e2e2e2]" ref={sectionRef} style={{fontFamily: "'Outfit', sans-serif"}}>
+//         <div className="max-w-6xl mx-auto">
           
-          <div className="grid grid-cols-4 gap-8 relative z-10">
+//           {/* Header: The Difference You Can Trust - Added here */}
+//           <motion.div 
+//             className="mb-10 md:mb-12 lg:mb-16"
+//             initial={{ opacity: 0, y: -20 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             viewport={{ once: true }}
+//             transition={{ duration: 0.6 }}
+//           >
+//             <motion.h1 
+//               className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-gray-900"
+//               initial={{ opacity: 0 }}
+//               whileInView={{ opacity: 1 }}
+//               viewport={{ once: true }}
+//               transition={{ duration: 0.6, delay: 0.1 }}
+//             >
+//               The Difference You Can Trust
+//             </motion.h1>
+            
+//             <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+//               {[
+//                 "FDA-approved techniques trusted worldwide",
+//                 "Percutaneous FUE with minimal scarring",
+//                 "97% success rate across 5000+ clients",
+//                 "Expert doctors and certified trichologists",
+//                 "Resume your normal routine within 2–3 days"
+//               ].map((text, index) => (
+//                 <motion.div 
+//                   key={index}
+//                   className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200"
+//                   initial={{ opacity: 0, scale: 0.9 }}
+//                   whileInView={{ opacity: 1, scale: 1 }}
+//                   viewport={{ once: true }}
+//                   transition={{ duration: 0.4, delay: 0.05 * index }}
+//                 >
+//                   <span className="text-sm md:text-base text-gray-800">{text}</span>
+//                 </motion.div>
+//               ))}
+//             </div>
+//           </motion.div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default ProcessTimeline;
+
+import React from 'react';
+
+export default function ClientSatisfaction() {
+  return (
+    <div className="bg-white py-2 px-4 sm:py-10 sm:px-6 lg:py-12 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Title */}
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-1 sm:mb-4 tracking-tight">
+          The Difference You Can Trust
+        </h1>
+        
+        {/* Subtitle */}
+        <p className="text-center text-gray-600 text-sm sm:text-base md:text-lg max-w-3xl sm:max-w-4xl mx-auto mb-4 sm:mb-12 leading-relaxed px-2">
+          Every procedure is performed with precision and care to ensure long-lasting, natural results you can feel confident about.
+        </p>
+
+        {/* Main Content Container */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-2 sm:gap-8 lg:gap-10 xl:gap-12 mb-8 sm:mb-10">
+          {/* Left Column - Features */}
+          <div className="flex flex-col gap-2 sm:gap-5 md:gap-6 w-full lg:w-1/3">
             {[
-              { 
-                number: 1, 
-                title: "Consultation & Scalp Scan", 
-                desc: "History, trichoscopy, expectations", 
-                icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" 
-              },
-              { 
-                number: 2, 
-                title: "Personalised Plan", 
-                desc: "Medical/laser/meso or transplant; pricing & EMI explained", 
-                icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" 
-              },
-              { 
-                number: 3, 
-                title: "Treatment Day", 
-                desc: "Comfort-first protocols; photo documentation", 
-                icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" 
-              },
-              { 
-                number: 4, 
-                title: "After-Care & Follow-Ups", 
-                desc: "Home-care guidance and progress tracking", 
-                icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" 
-              }
-            ].map((item, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white border-4 border-[#ea2629] flex items-center justify-center text-[#1e1e1e] text-xl md:text-2xl font-bold shadow-lg mb-4 relative">
-                  <div className="absolute -top-1 -right-1 w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#ea2629] flex items-center justify-center text-white text-sm md:text-base">
-                    {item.number}
-                  </div>
-                  <svg className="w-8 h-8 md:w-10 md:h-10 text-[#ea2629]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d={item.icon} />
-                  </svg>
+              "FDA-approved techniques trusted worldwide",
+              "Percutaneous FUE with minimal scarring",
+              "97% success rate across 5000+ clients",
+              "Turnitin Plag Check"
+            ].map((text, index) => (
+              <div 
+                key={index}
+                className="bg-[#ec2028]/10 py-4 sm:py-5 px-6 sm:px-8 shadow-md transform skew-x-[-12deg] hover:scale-[1.02] transition-all duration-300 hover:shadow-lg"
+              >
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg skew-x-[12deg]">
+                  {text}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Center - Image with Decorative Elements */}
+          <div className="relative my-4 sm:my-6 lg:my-0 w-full lg:w-1/3 flex justify-center items-center px-2">
+            {/* Background decorative elements - hidden on smallest screens */}
+            <div className="absolute inset-0 hidden sm:block">
+              <div className="absolute -top-4 -left-4 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full border-2 border-[#ec2028]/20"></div>
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 rounded-full border-2 border-[#ec2028]/20"></div>
+            </div>
+            
+            {/* Laptop mockup with woman */}
+            <div className="relative z-10 w-full max-w-xs sm:max-w-sm md:max-w-md">
+              <div className="relative">
+                {/* Image container with responsive sizing */}
+                <div className="bg-gradient-to-b from-blue-100 to-blue-50 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl aspect-[3/4] sm:aspect-auto">
+                  <img 
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=500&fit=crop" 
+                    alt="Happy woman with laptop"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
-                <div className="bg-white rounded-2xl p-4 md:p-6 shadow-lg text-center min-h-[220px] flex flex-col justify-center">
-                  <h3 className="text-lg md:text-xl font-bold text-[#1e1e1e] mb-2">{item.title}</h3>
-                  <p className="text-sm md:text-base text-[#1e1e1e]">{item.desc}</p>
-                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Features */}
+          <div className="flex flex-col gap-2 sm:gap-5 md:gap-6 w-full lg:w-1/3">
+            {[
+              "Expert doctors and certified trichologists",
+              "Resume your normal routine within 2–3 days",
+              "Free Revisions",
+              "High Attention To Requirements"
+            ].map((text, index) => (
+              <div 
+                key={index}
+                className="bg-[#ec2028]/10 py-4 sm:py-5 px-6 sm:px-8 shadow-md transform skew-x-[-12deg] hover:scale-[1.02] transition-all duration-300 hover:shadow-lg"
+              >
+                <p className="text-gray-800 text-sm sm:text-base md:text-lg skew-x-[12deg]">
+                  {text}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Mobile Timeline (vertical) */}
-        <div className="md:hidden relative">
-          {/* Vertical connecting line */}
-          <div className="absolute left-6 top-4 bottom-4 w-1 bg-gray-300 z-0">
-            <div 
-              className="w-full bg-[#ea2629] transition-all duration-1000 ease-out"
-              style={{ height: inView ? '100%' : '0%' }}
-            ></div>
-          </div>
-          
-          <div className="space-y-8 relative z-10 pl-16">
-            {[
-              { 
-                number: 1, 
-                title: "Consultation & Scalp Scan", 
-                desc: "History, trichoscopy, expectations", 
-                icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" 
-              },
-              { 
-                number: 2, 
-                title: "Personalised Plan", 
-                desc: "Medical/laser/PRP/meso or transplant; pricing & EMI explained", 
-                icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" 
-              },
-              { 
-                number: 3, 
-                title: "Treatment Day", 
-                desc: "Comfort-first protocols; photo documentation", 
-                icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" 
-              },
-              { 
-                number: 4, 
-                title: "After-Care & Follow-Ups", 
-                desc: "Home-care guidance and progress tracking", 
-                icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" 
-              }
-            ].map((item, index) => (
-              <div key={index} className="flex items-start">
-                <div className="w-12 h-12 rounded-full bg-white border-4 border-[#ea2629] flex items-center justify-center text-[#1e1e1e] font-bold shadow-lg relative -ml-16 flex-shrink-0">
-                  <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#ea2629] flex items-center justify-center text-white text-xs">
-                    {item.number}
-                  </div>
-                  <svg className="w-6 h-6 text-[#ea2629]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d={item.icon} />
-                  </svg>
-                </div>
-                <div className="bg-white rounded-2xl p-4 shadow-lg ml-4 flex-1">
-                  <h3 className="text-lg font-bold text-[#1e1e1e] mb-1">{item.title}</h3>
-                  <p className="text-sm text-[#1e1e1e]">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* CTA Button */}
+        <div className="flex justify-center mt-6 sm:mt-8">
+          <a
+            href="#form"
+            className="flex items-center justify-center text-white font-medium py-3 px-6 sm:py-4 sm:px-8 rounded-full text-sm sm:text-base md:text-lg bg-[#ec2028] shadow-md transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_15px_#ec2028] focus:outline-none focus:ring-2 focus:ring-[#ec2028]/60 active:scale-95 w-full max-w-xs sm:max-w-none sm:w-auto"
+          >
+            <svg
+              className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            <span className="whitespace-nowrap font-semibold">
+              Book&nbsp;Consultation Now
+            </span>
+          </a>
         </div>
       </div>
     </div>
-    </>
   );
-};
-
-export default ProcessTimeline;
+}

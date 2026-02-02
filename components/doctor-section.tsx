@@ -6,7 +6,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const BeforeAfterGallery = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
-  const carouselIntervalRef = useRef(null);
+  // const carouselIntervalRef = useRef(null);
+  const carouselIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const beforeAfterGallery = [
     {
@@ -46,6 +47,7 @@ const BeforeAfterGallery = () => {
     return () => {
       if (carouselIntervalRef.current) {
         clearInterval(carouselIntervalRef.current);
+        carouselIntervalRef.current = null;
       }
     };
   }, [autoPlay, beforeAfterGallery.length]);
@@ -125,7 +127,7 @@ const BeforeAfterGallery = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Witness the incredible transformation of our satisfied patients
+            See the Life-Changing Transformations for Yourself
           </motion.p>
         </motion.div>
         

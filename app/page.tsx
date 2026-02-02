@@ -26,16 +26,17 @@ export default function HomePage() {
       <Hero />
       <TrustHighlights />
       <Problem />
-      <section id="services">
+      {/* <section id="services">
       <Solution />
-      </section>
+      </section> */}
       <ProcessTimeline />
+       <section id="gallery">
+       <BeforeAfterGallery />
+       </section>
       <section id="testimonials"> 
       <Testimonials />
       </section>
-      <section id="gallery">
-       <BeforeAfterGallery />
-       </section>
+     
       <FinalCTA/>
 
      <CombinedSection />

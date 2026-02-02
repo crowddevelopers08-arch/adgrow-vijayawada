@@ -1,121 +1,175 @@
 "use client";
-import React from 'react';
-import { motion } from "framer-motion";
 
-const AdgroServices = () => {
+import { motion } from "framer-motion";
+import { ChevronRight, CheckCircle } from "lucide-react";
+import { useState, useEffect } from "react";
+
+const NorwoodScaleSection = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  // ✅ Images (make sure these exist in /public)
+  const norwoodImages = [
+    { id: 1, src: "/adgro-img1.jpg" },
+    { id: 2, src: "/adgro-img2.jpg" },
+    { id: 3, src: "/adgro-img.jpg" },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % norwoodImages.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [norwoodImages.length]);
+
+  const norwoodStages = [
+    {
+      stage: "Stage 1",
+      title: "Early Thinning",
+      description: "Minor recession of hairline",
+      treatments: ["Medication", "PRP Therapy"],
+    },
+    {
+      stage: "Stage 2",
+      title: "Temple Recession",
+      description: "Noticeable M-shape forming",
+      treatments: ["Laser Therapy", "Medicated Solutions"],
+    },
+    {
+      stage: "Stage 3",
+      title: "Moderate Baldness",
+      description: "Deep frontal recession",
+      treatments: ["FUE Transplant", "Advanced PRP"],
+    },
+    {
+      stage: "Stage 4",
+      title: "Advanced Recession",
+      description: "Significant hair loss on crown",
+      treatments: ["High Graft Transplant", "Combination Therapy"],
+    },
+  ];
+
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 max-[470px]:py-6 md:py-12">
-       <motion.h2
-      className="text-2xl max-[470px]:text-[22px] sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 md:mb-12 text-[#101828] relative"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.8,
-        type: "spring",
-        stiffness: 80,
-        damping: 15,
-      }}
-    >
-      <span className="relative inline-block">
-        Why Choose Adgro (Vijayawada)
-       
-      </span>
-    </motion.h2>
-      
-      
-      <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
-        {/* Left Column - Image */}
-        <div className="lg:w-1/3 flex items-center justify-center my-6 md:my-8 lg:my-0 order-2 lg:order-1">
-          <div className="relative w-full max-w-md">
-            {/* Decorative background elements */}
-            <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-20 h-20 md:w-24 md:h-24 bg-[#ec2028]/10 rounded-full opacity-70"></div>
-            <div className="absolute -bottom-3 -right-3 md:-bottom-4 md:-right-4 w-16 h-16 md:w-20 md:h-20 bg-[#101828]/10 rounded-full opacity-70"></div>
-            <div className="absolute top-1/2 -right-4 md:-right-6 w-14 h-14 md:w-16 md:h-16 bg-[#ec2028]/10 rounded-full opacity-70"></div>
-            
-            {/* Main image container */}
-            <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden border-4 border-white">
-              <img 
-                src="vijdoc.jpg" 
-                alt="Healthcare professional performing scalp analysis"
-                className="w-full h-72 md:h-80 lg:h-[500px] max-[470px]:h-[400px] object-cover rounded-lg"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                
+    <section className="py-4 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-6xl mx-auto">
+        {/* Heading */}
+        <motion.div
+          className="text-center max-sm:mb-2 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-4">
+            Which Stage Are You At?
+          </h2>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            From early thinning to advanced baldness, our surgeons cover every
+            stage with proven solutions.
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+          {/* LEFT: Image carousel */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 border border-gray-200 shadow-lg">
+              {/* Main Image */}
+              <div className="aspect-[4/3.4] relative rounded-xl overflow-hidden bg-gray-200">
+                <motion.img
+                  key={currentImage}
+                  src={norwoodImages[currentImage].src}
+                  alt={`Norwood Stage ${norwoodImages[currentImage].id}`}
+                  className="w-full h-full object-cover"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                />
               </div>
             </div>
-            
-          
-          </div>
+          </motion.div>
+
+          {/* RIGHT: Stages */}
+          <motion.div
+            className="grid sm:grid-cols-2 gap-6"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            {norwoodStages.map((stage, index) => (
+              <motion.div
+                key={index}
+                className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm hover:shadow-lg transition"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
+              >
+                <div className="flex items-center mb-2">
+                  <div className="w-8 h-8 rounded-full bg-[#ec2028]/10 flex items-center justify-center mr-3">
+                    <span className="text-sm font-bold text-[#ec2028]">
+                      {stage.stage.split(" ")[1]}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-black">{stage.title}</h3>
+                </div>
+
+                <p className="text-sm text-gray-600 ml-11 mb-3">
+                  {stage.description}
+                </p>
+
+                <div className="flex items-center text-sm text-gray-700 mb-2">
+                  <CheckCircle className="w-4 h-4 text-[#ec2028] mr-2" />
+                  <span className="font-medium">Effective Treatments</span>
+                </div>
+
+                <div className="flex flex-wrap gap-2 ml-6">
+                  {stage.treatments.map((t, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 bg-gray-100 text-xs rounded-full border"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-        
-        {/* Right Column - All Cards */}
-        <div className="lg:w-2/3 space-y-6 md:space-y-8 order-1 lg:order-2">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {/* First Column of Cards */}
-            <div className="space-y-6 md:space-y-8">
-              <div className="bg-white p-5 md:p-6 rounded-lg shadow-md border-l-4 border-[#ec2028]">
-                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-[#101828]">
-                  Comprehensive Diagnosis
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  We treat the cause, not just the symptoms. Detailed scalp scan, history, and labs when needed.
-                </p>
-              </div>
-              
-              <div className="bg-white p-5 md:p-6 rounded-lg shadow-md border-l-4 border-[#ec2028]">
-                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-[#101828]">
-                  Personalized Treatment Plans
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  Custom plans for men & women. From early thinning to advanced baldness.
-                </p>
-              </div>
-              
-              <div className="bg-white p-5 md:p-6 rounded-lg shadow-md border-l-4 border-[#ec2028]">
-                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-[#101828]">
-                  Natural-Looking Results
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  Hairline design that suits face, age, and hair characteristics.
-                </p>
-              </div>
-            </div>
-            
-            {/* Second Column of Cards */}
-            <div className="space-y-6 md:space-y-8">
-              <div className="bg-white p-5 md:p-6 rounded-lg shadow-md border-l-4 border-[#ec2028]">
-                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-[#101828]">
-                  Comfort-First Approach
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  Gentle techniques, clear prep and recovery guidance.
-                </p>
-              </div>
-              
-              <div className="bg-white p-5 md:p-6 rounded-lg shadow-md border-l-4 border-[#ec2028]">
-                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-[#101828]">
-                  Easy to Start
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  Straightforward pricing with no-cost EMIs on eligible packages.
-                </p>
-              </div>
-              
-              <div className="bg-white p-5 md:p-6 rounded-lg shadow-md border-l-4 border-[#ec2028]">
-                <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 text-[#101828]">
-                  Convenient Location
-                </h3>
-                <p className="text-sm md:text-base text-gray-600">
-                  Easy to reach. Minutes from Benz Circle, Labbipet, Governorpet, Moghalrajpuram & more.
-                </p>
-              </div>
-            </div>
-          </div>
+
+        {/* CTA */}
+        <div className="flex justify-center mt-10">
+          <a
+            href="#form"
+            className={`hidden sm:flex items-center text-white font-medium py-4 px-6 rounded-full text-sm sm:text-lg
+                            bg-[#ec2028] shadow-md transition-all duration-300 ease-out
+                            hover:scale-105 hover:shadow-[0_0_15px_#ec2028]
+                            focus:outline-none focus:ring-2 focus:ring-[#ec2028]/60`}
+          >
+            <svg
+              className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            <span className="whitespace-nowrap font-semibold">
+              Book&nbsp;Consultation Now
+            </span>
+          </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default AdgroServices;
+export default NorwoodScaleSection;

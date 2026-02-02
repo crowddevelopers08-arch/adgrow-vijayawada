@@ -78,7 +78,7 @@ const HairRestorationSolutions = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Card 1 */}
         <div 
-          ref={el => sectionRefs.current[0] = el}
+          ref={el => {sectionRefs.current[0] = el}}
           className={`p-0 rounded-xl shadow-lg transition-all duration-300 border overflow-hidden ${
             activeSection === 0 
               ? 'border-[#ec2028] shadow-xl transform -translate-y-1 bg-[#101828] text-white' 
@@ -126,7 +126,7 @@ const HairRestorationSolutions = () => {
         
         {/* Card 2 */}
         <div 
-          ref={el => sectionRefs.current[1] = el}
+          ref={el => {sectionRefs.current[1] = el}}
           className={`p-0 rounded-xl shadow-lg transition-all duration-300 border overflow-hidden ${
             activeSection === 1 
               ? 'border-[#ec2028] shadow-xl transform -translate-y-1 bg-[#101828] text-white' 
@@ -174,7 +174,7 @@ const HairRestorationSolutions = () => {
         
         {/* Card 3 */}
         <div 
-          ref={el => sectionRefs.current[2] = el}
+          ref={el => {sectionRefs.current[2] = el}}
           className={`p-0 rounded-xl shadow-lg transition-all duration-300 border overflow-hidden ${
             activeSection === 2 
               ? 'border-[#ec2028] shadow-xl transform -translate-y-1 bg-[#101828] text-white' 
@@ -222,7 +222,7 @@ const HairRestorationSolutions = () => {
         
         {/* Card 4 */}
         <div 
-          ref={el => sectionRefs.current[3] = el}
+          ref={el => {sectionRefs.current[3] = el}}
           className={`p-0 rounded-xl shadow-lg transition-all duration-300 border overflow-hidden ${
             activeSection === 3 
               ? 'border-[#ec2028] shadow-xl transform -translate-y-1 bg-[#101828] text-white' 
@@ -271,7 +271,7 @@ const HairRestorationSolutions = () => {
       
       {/* Card 5 - Full width without image */}
       <div 
-        ref={el => sectionRefs.current[4] = el}
+        ref={el => {sectionRefs.current[4] = el}}
         className={`mt-6 p-6 rounded-xl shadow-lg transition-all duration-300 border text-center ${
           activeSection === 4 
             ? 'border-[#ec2028] shadow-xl transform -translate-y-1 bg-[#101828] text-white' 

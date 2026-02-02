@@ -1,47 +1,65 @@
-import React from "react";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, AlertCircle } from "lucide-react";
 
-const TrustHighlights: React.FC = () => {
-  const points = [
-    "Dermatologist-led team",
-    "Root-cause diagnosis & trichoscopy",
-    "Combination therapy for better outcomes",
-    "Transparent quotes & no-cost EMI options",
-    "Sterile procedures & documented after-care",
-    "Centrally located on Tikkle Road, Acharya Ranga Nagar",
-  ];
-
+export default function OfferHighlight() {
   return (
-    <div className="bg-[#101828] text-white rounded-2xl shadow-lg max-w-6xl mx-auto px-6 sm:px-8 py-5 max-[470px]:py-5 max-[470px]:mt-5 pr-[0px] mt-10">
-      <div className="flex flex-col md:flex-row items-center gap-10">
-        {/* Left Side Content */}
-        <div className="flex-1">
-          <h2 className="text-2xl max-[470px]:text-[22px] md:text-3xl font-bold mb-6 text-center md:text-left">
-            Trust Highlights
-          </h2>
-          <ul className="space-y-4">
-            {points.map((point, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <CheckCircle className="text-[#ec2028] w-6 h-6 flex-shrink-0" />
-                <span className="text-base md:text-lg leading-relaxed">
-                  {point}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-8 sm:p-12 border border-gray-200 shadow-lg">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#ec2028] mb-4">
+              ₹99,999 Flat | Unlimited Follicles in One Session
+            </h2>
+            <p className="text-md sm:text-lg text-black max-w-3xl mx-auto font-medium">
+              No hidden costs. No extra charges per graft. Just transparent,
+              world-class care.
+            </p>
+          </div>
 
-        {/* Right Side Image */}
-        <div className="flex-1 flex justify-center">
-          <img
-            src="ban2.jpg"
-            alt="Trust Highlights"
-            className="rounded-2xl shadow-md object-cover w-full max-w-xs sm:max-w-sm md:max-w-md"
-          />
+          <div className="grid sm:grid-cols-3 gap-6 mb-8">
+            <div className="flex items-start gap-3 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+              <CheckCircle className="w-6 h-6 text-[#ec2028] flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-lg font-semibold text-black mb-1">
+                  Unlimited Grafts
+                </h3>
+                <p className="text-gray-700 text-sm sm:text-base">
+                  No per-graft charges, complete coverage
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+              <CheckCircle className="w-6 h-6 text-[#ec2028] flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-lg font-semibold text-black mb-1">
+                  Transparent Pricing
+                </h3>
+                <p className="text-gray-700 text-sm sm:text-base">
+                  One flat price, no surprises
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+              <CheckCircle className="w-6 h-6 text-[#ec2028] flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-lg font-semibold text-black mb-1">
+                  World-Class Care
+                </h3>
+                <p className="text-gray-700 text-sm sm:text-base">
+                  Premium service at honest pricing
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <div className="inline-flex items-center gap-2 bg-[#ec2028]/8 border border-[#ec2028]/30 rounded-xl px-4 py-2">
+              <AlertCircle className="w-5 h-5 text-[#ec2028]" />
+              <p className="text-black font-semibold text-base sm:text-lg">
+                Only a few slots remain this month.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default TrustHighlights;
+}

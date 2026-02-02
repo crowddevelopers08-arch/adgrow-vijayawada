@@ -6,7 +6,7 @@
 
 :root {
   /* Updated color tokens to match gold (#d09a40) and black (#000000) design brief */
-  --background: oklch(1 0 0); /* White background */
+  /* --background: #fff5f5; White background */
   --foreground: oklch(0 0 0); /* Black text */
   --card: oklch(0.98 0 0); /* Light card background */
   --card-foreground: oklch(0 0 0); /* Black card text */
