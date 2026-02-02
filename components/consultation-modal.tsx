@@ -194,11 +194,11 @@ const CombinedSection = () => {
                   disabled={isSubmitting}
                 >
                   <option value="">Select your concern</option>
-                  <option value="Hair Fall Treatment">Hair fall treatment</option>
-                  <option value="Hair Loss Solutions">Hair loss solutions</option>
-                  <option value="Hair Transplant">Hair Transplant</option>
-                  <option value="Mesotherapy">Mesotherapy</option>
-                  <option value="Hair Regrowth Treatment">Hair regrowth treatment</option>
+                  <option value="Baldness">Baldness</option>
+                  <option value="Thinning">Thinning</option>
+                  <option value="Receding Hairline">Receding Hairline</option>
+                  <option value=" Patchy Beard/Hair Loss"> Patchy Beard/Hair Loss</option>
+                  <option value="Others">Others</option>
                 </select>
               </div>
 

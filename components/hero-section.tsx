@@ -186,23 +186,6 @@ const HairClinicHero = () => {
                 </div>
               </div>
 
-              {/* Navigation Buttons */}
-              <button
-                onClick={prevImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hover:bg-white hover:scale-110 hover:shadow-3xl transition-all duration-300 z-20 border border-gray-200"
-                aria-label="Previous image"
-              >
-                <ChevronLeft className="w-7 h-7 text-gray-800" />
-              </button>
-              
-              <button
-                onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hover:bg-white hover:scale-110 hover:shadow-3xl transition-all duration-300 z-20 border border-gray-200"
-                aria-label="Next image"
-              >
-                <ChevronRight className="w-7 h-7 text-gray-800" />
-              </button>
-
               {/* Image Indicators/Dots */}
               <div className="flex justify-center mt-8 space-x-3">
                 {images.map((_, index) => (
