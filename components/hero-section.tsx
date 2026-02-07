@@ -150,7 +150,7 @@ const HairClinicHero = () => {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <span className="whitespace-nowrap font-semibold">Book Free Consultation Now</span>
+                      <span className="whitespace-nowrap font-semibold">Book Consultation Now</span>
                     </div>
                   </a>
 

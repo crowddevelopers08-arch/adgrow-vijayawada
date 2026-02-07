@@ -28,7 +28,7 @@ const ComparisonSection: React.FC = () => {
     {
       feature: "Aftercare Support",
       others: "No personalised aftercare",
-      adgro: "Free 2-month hair care maintenance + scalp analysis",
+      adgro: "2-month hair care maintenance + scalp analysis",
       othersIcon: <X className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-red-500" />,
       adgroIcon: <Check className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-green-500" />
     }

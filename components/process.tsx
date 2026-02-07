@@ -149,7 +149,7 @@ export default function ClientSatisfaction() {
             {[
               "Expert doctors and certified trichologists",
               "Resume your normal routine within 2–3 days",
-              "Free Revisions",
+              "Revisions",
               "High Attention To Requirements"
             ].map((text, index) => (
               <div 

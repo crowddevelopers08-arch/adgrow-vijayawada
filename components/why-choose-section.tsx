@@ -76,7 +76,7 @@ const AdvertisementBanner = () => {
                   </span>
                   <span className="flex items-center gap-1">
                     <div className="w-1.5 h-1.5 xs:w-2 xs:h-2 bg-green-500 rounded-full"></div>
-                    Free Consultation
+                    Consultation
                   </span>
                   <span className="flex items-center gap-1">
                     <div className="w-1.5 h-1.5 xs:w-2 xs:h-2 bg-green-500 rounded-full"></div>
